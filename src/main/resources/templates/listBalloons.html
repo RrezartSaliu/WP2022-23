@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Balloon Order page - Welcome and choose a Balloon</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to our Balloon Shop App</h1>
+</header>
+<main>
+    <p>
+        Number of orders: <div th:text="${totalOrders}"></div>
+    </p>
+    <ul th:each="balloon: ${BalloonList}">
+        <li>
+        <div th:text="${balloon.getName()}">
+
+        </div>
+        <div th:text="${balloon.getDescription()}">
+
+        </div>
+            <form th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}" th:method="post">
+                <input type="submit" th:value="delete">
+            </form>
+            <form th:action="@{'/balloons/edit/{id}' (id=${balloon.getId()})}" th:method="post">
+                <input type="submit" th:value="edit">
+            </form>
+        </li>
+    </ul>
+    <h2>Choose balloon color:</h2>
+    <form method="get" action="/selectBalloon">
+
+    <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
+    <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
+    <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
+    <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
+
+    <br/>
+    <input type="submit" value="submit">
+    </form>
+    <form action="/addBalloonPage" method="get">
+        <input type="submit" value="Add Balloon">
+    </form>
+</main>
+</body>
+</html>
