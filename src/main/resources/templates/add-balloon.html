@@ -10,7 +10,7 @@
     <input type="hidden" name="balloonId" th:value="(${balloon} != null ? ${balloon.getId()} : '')">
     <input type="text" name="name" placeholder="Enter balloon name" th:value="${balloon} != null? ${balloon.getName()}:''">
     <input type="text" name="description" placeholder="Enter description" th:value="${balloon} != null? ${balloon.getDescription()}:''">
-    <select name="manufacturer">
+    <select name="id">
         <option th:if="${balloon} != null"
                 th:selected="${balloon.getManufacturer != null && balloon.getManufacturer().getId() == man.getId()}"
                 th:each="man : ${manufacturers}"

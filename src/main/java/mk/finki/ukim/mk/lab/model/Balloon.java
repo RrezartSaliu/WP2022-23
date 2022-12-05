@@ -5,10 +5,14 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
+@Entity
 public class Balloon {
     String name;
     String description;
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
     Manufacturer manufacturer;
+    @Id
     private Long id;
 
     public Balloon(String name, String description, Manufacturer manufacturer) {

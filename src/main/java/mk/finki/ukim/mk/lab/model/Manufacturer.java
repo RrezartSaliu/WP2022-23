@@ -8,7 +8,9 @@ import javax.persistence.Id;
 
 
 @Data
+@Entity
 public class Manufacturer {
+    @Id
     private Long id;
     private String name;
     private String country;
